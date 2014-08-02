@@ -1,0 +1,25 @@
+---
+
+- name: Resetting firewall
+  ufw: >
+    state=reset
+  tags:
+    - networking
+    - ufw
+
+- name: Configuring firewall
+  ufw: >
+    port={{ item.port }}
+    rule={{ item.rule if item.rule is defined else "allow" }}
+    proto={{ item.proto if item.proto is defined else "any" }}
+  with_items: ufw_rules
+  tags:
+    - networking
+    - ufw
+
+- name: Setting firewall's state
+  ufw: >
+    state={{ ufw_state }}
+  tags:
+    - networking
+    - ufw

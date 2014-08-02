@@ -1,0 +1,11 @@
+---
+
+- hosts: all
+  vars_files:
+    - 'defaults/main.yml'
+  tasks:
+    - include: 'tasks/main.yml'
+      vars:
+        ufw_rules:
+          - { port: 22 }
+          - { port: 80, rule: allow }
