@@ -1,7 +1,7 @@
 # Ansible Ufw Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-role-ufw.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-role-ufw)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-role-ufw.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-role-ufw)
+[![Build Status](https://travis-ci.org/weareinteractive/ansible-ufw.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-ufw)
+[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-ufw.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-ufw)
 
 > `ufw` is an [ansible](http://www.ansible.com) role which: 
 > 
@@ -25,7 +25,7 @@ $ arm install franklinkim.ufw
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-ufw.git
+$ git clone https://github.com/weareinteractive/ansible-ufw.git
 ```
 
 ## Variables
@@ -57,8 +57,8 @@ ufw_state: enabled
 ## Testing
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-ufw.git
-$ cd ansible-role-ufw
+$ git clone https://github.com/weareinteractive/ansible-ufw.git
+$ cd ansible-ufw
 $ vagrant up
 ```
 

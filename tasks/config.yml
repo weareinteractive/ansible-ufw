@@ -17,9 +17,3 @@
     - networking
     - ufw
 
-- name: Setting firewall's state
-  ufw: >
-    state={{ ufw_state }}
-  tags:
-    - networking
-    - ufw

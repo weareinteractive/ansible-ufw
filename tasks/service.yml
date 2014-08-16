@@ -1,0 +1,8 @@
+---
+
+- name: Configuring service
+  ufw: >
+    state={{ ufw_state }}
+  tags:
+    - networking
+    - ufw
