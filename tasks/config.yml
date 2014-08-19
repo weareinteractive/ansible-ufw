@@ -1,12 +1,5 @@
 ---
 
-- name: Resetting firewall
-  ufw: >
-    state=reset
-  tags:
-    - networking
-    - ufw
-
 - name: Configuring firewall
   ufw: >
     port={{ item.port }}
@@ -16,4 +9,4 @@
   tags:
     - networking
     - ufw
-
+    - config

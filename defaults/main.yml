@@ -3,7 +3,8 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # ufw_rules:
-#   - { port: 22, rule: allow, proto: any }
+#   - { port: 22 }
+#   - { port: 80, rule: allow, proto: any }
 #
 
 # list of rules
