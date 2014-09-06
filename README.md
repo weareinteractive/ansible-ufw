@@ -43,6 +43,7 @@ Here is a list of all the default variables for this role, which are also availa
 # list of rules
 ufw_rules: []
 # /etc/defaut/ufw settings
+ufw_ipv6: 'yes'
 ufw_default_input_policy: DROP
 ufw_default_output_policy: "ACCEPT"
 ufw_default_forward_policy: "ACCEPT"
