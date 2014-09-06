@@ -1,11 +1,24 @@
 ---
 
-- name: Configuring firewall
+- name: Configuring rules
   ufw: >
     port={{ item.port }}
     rule={{ item.rule if item.rule is defined else "allow" }}
     proto={{ item.proto if item.proto is defined else "any" }}
   with_items: ufw_rules
+  tags:
+    - networking
+    - ufw
+    - config
+
+- name: Configuring firewall
+  template: >
+    src=etc-default-ufw.j2
+    dest=/etc/default/ufw
+    owner=root
+    group=root
+    mode=0644
+  notify: reload ufw
   tags:
     - networking
     - ufw

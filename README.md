@@ -6,6 +6,7 @@
 > `ufw` is an [ansible](http://www.ansible.com) role which: 
 > 
 > * installs ufw 
+> * configures ufw
 > * configures ufw rules
 > * configures service
 
@@ -41,9 +42,14 @@ Here is a list of all the default variables for this role, which are also availa
 
 # list of rules
 ufw_rules: []
+# /etc/defaut/ufw settings
+ufw_ipv6: 'yes'
+ufw_default_input_policy: DROP
+ufw_default_output_policy: "ACCEPT"
+ufw_default_forward_policy: "ACCEPT"
+ufw_default_application_policy: "SKIP"
 # firewall state: enabled | disabled
 ufw_state: enabled
-
 ```
 
 ## Example playbook
@@ -56,7 +62,7 @@ ufw_state: enabled
     ufw_rules:
       - { port: 22 }
       - { port: 80, rule: allow }
-    ufw_state: enabled
+    ufw_default_forward_policy: ACCEPT
 ```
 
 ## Testing
