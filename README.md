@@ -50,6 +50,7 @@ ufw_default_forward_policy: "ACCEPT"
 ufw_default_application_policy: "SKIP"
 # firewall state: enabled | disabled
 ufw_state: enabled
+ufw_logging: 'off'
 ```
 
 ## Example playbook
