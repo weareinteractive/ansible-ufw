@@ -8,3 +8,4 @@
       - { port: 22 }
       - { port: 80, rule: allow }
     ufw_default_forward_policy: ACCEPT
+    ufw_logging: low
