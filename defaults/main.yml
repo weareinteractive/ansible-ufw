@@ -9,6 +9,10 @@
 
 # list of rules
 ufw_rules: []
+# list of networks (CIDR notation)
+ufw_networks: []
+# list of premade ufw application rules
+ufw_applications: []
 # /etc/defaut/ufw settings
 ufw_ipv6: 'yes'
 ufw_default_input_policy: DROP

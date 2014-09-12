@@ -8,3 +8,9 @@
       - { port: 22 }
       - { port: 80, rule: allow }
     ufw_default_forward_policy: ACCEPT
+    ufw_networks:
+     - { ip: '127.0.0.1/8' }
+     - { ip: '127.0.42.0/24', rule: deny }
+    ufw_applications:
+     - { name: "WWW Full" }
+     - { name: "IMAP", rule: deny }

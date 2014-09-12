@@ -42,6 +42,10 @@ Here is a list of all the default variables for this role, which are also availa
 
 # list of rules
 ufw_rules: []
+# list of networks (CIDR notation), default is accept
+ufw_networks: []
+# list of premade ufw application rules, default is accept
+ufw_applications: []
 # /etc/defaut/ufw settings
 ufw_ipv6: 'yes'
 ufw_default_input_policy: DROP
@@ -63,6 +67,13 @@ ufw_state: enabled
       - { port: 22 }
       - { port: 80, rule: allow }
     ufw_default_forward_policy: ACCEPT
+    ufw_networks:
+     - { ip: '127.0.0.1/8' }
+     - { ip: '172.17.42.0/24', rule: deny }
+    ufw_applications:
+     - { name: "WWW Full" }
+     - { name: "IMAP", rule: deny }
+
 ```
 
 ## Testing

@@ -1,11 +1,31 @@
 ---
 
-- name: Configuring rules
+- name: Configuring port/protocol rules
   ufw: >
     port={{ item.port }}
     rule={{ item.rule if item.rule is defined else "allow" }}
     proto={{ item.proto if item.proto is defined else "any" }}
   with_items: ufw_rules
+  tags:
+    - networking
+    - ufw
+    - config
+
+- name: Configuring network rules
+  ufw: >
+    from_ip="{{ item.ip }}"
+    rule={{ item.rule if item.rule is defined else "allow" }}
+  with_items: ufw_networks
+  tags:
+    - networking
+    - ufw
+    - config
+
+- name: Configuring application rules
+  ufw: >
+    name="{{ item.name }}"
+    rule={{ item.rule if item.rule is defined else "allow" }}
+  with_items: ufw_applications
   tags:
     - networking
     - ufw
