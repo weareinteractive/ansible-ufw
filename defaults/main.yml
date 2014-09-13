@@ -3,18 +3,21 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # ufw_rules:
-#   - { port: 22 }
-#   - { port: 80, rule: allow, proto: any }
+#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] }
+# ufw_applications:
+#   - { name: OpenSSH [rule: allow] }
 #
 
 # list of rules
 ufw_rules: []
+# list of profiles located in /etc/ufw/applications.d
+ufw_applications: []
 # /etc/defaut/ufw settings
-ufw_ipv6: 'yes'
-ufw_default_input_policy: DROP
+ufw_ipv6: "yes"
+ufw_default_input_policy: "DROP"
 ufw_default_output_policy: "ACCEPT"
 ufw_default_forward_policy: "DROP"
 ufw_default_application_policy: "SKIP"
 # firewall state: enabled | disabled
 ufw_state: enabled
-ufw_logging: 'off'
+ufw_logging: "off"
