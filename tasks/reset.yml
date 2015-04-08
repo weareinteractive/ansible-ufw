@@ -1,9 +1,5 @@
 ---
 
 - name: Resetting firewall
-  ufw: >
-    state=reset
-  tags:
-    - networking
-    - ufw
-    - reset
+  ufw:
+    state: reset
