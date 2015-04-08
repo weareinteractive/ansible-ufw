@@ -1,11 +1,13 @@
 # Ansible Ufw Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-ufw.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-ufw)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-ufw.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-ufw)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-ufw.svg)](https://travis-ci.org/weareinteractive/ansible-ufw)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.supervisor-blue.svg)](https://galaxy.ansible.com/list#/roles/1382)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
 
-> `ufw` is an [ansible](http://www.ansible.com) role which: 
-> 
-> * installs ufw 
+> `ufw` is an [ansible](http://www.ansible.com) role which:
+>
+> * installs ufw
 > * configures ufw
 > * configures ufw rules
 > * configures service
@@ -18,17 +20,21 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.ufw
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.ufw
+- src: franklinkim.ufw
 ```
 
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-ufw.git
+$ git clone https://github.com/weareinteractive/ansible-ufw.git franklinkim.ufw
 ```
+
+## Dependencies
+
+* Ansible 1.9
 
 ## Variables
 
@@ -41,6 +47,8 @@ Here is a list of all the default variables for this role, which are also availa
 #   - { name: OpenSSH [rule: allow] }
 #
 
+# package name (version)
+ufw_package: ufw
 # list of rules
 ufw_rules: []
 # list of profiles located in /etc/ufw/applications.d
@@ -48,9 +56,9 @@ ufw_applications: []
 # /etc/defaut/ufw settings
 ufw_ipv6: 'yes'
 ufw_default_input_policy: DROP
-ufw_default_output_policy: "ACCEPT"
-ufw_default_forward_policy: "DROP"
-ufw_default_application_policy: "SKIP"
+ufw_default_output_policy: ACCEPT
+ufw_default_forward_policy: DROP
+ufw_default_application_policy: SKIP
 # firewall state: enabled | disabled
 ufw_state: enabled
 ufw_logging: 'off'
@@ -60,7 +68,8 @@ ufw_logging: 'off'
 
 ```
 - host: all
-  roles: 
+  sudo: yes
+  roles:
     - franklinkim.ufw
   vars:
     ufw_rules:
@@ -71,7 +80,6 @@ ufw_logging: 'off'
     ufw_applications:
      - { name: "OpenSSH" }
      - { name: "IMAP", rule: deny }
-
 ```
 
 ## Testing

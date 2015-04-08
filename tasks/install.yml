@@ -1,12 +1,6 @@
 ---
 
-- name: Installing packages
-  apt: >
-    pkg={{ item }}
-    state=present
-  with_items:
-    - ufw
-  tags:
-    - networking
-    - ufw
-    - install
+- name: Installing APT package
+  apt:
+    pkg: "{{ ufw_package }}"
+    state: present
