@@ -1,17 +1,14 @@
 ---
-language: phyton
+
+language: python
 python: "2.7"
-
-sudo: required
-
-services:
-  - docker
-
 before_install:
-  - docker pull williamyeh/ansible:ubuntu14.04
-
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq python-apt python-pycurl aptitude
+install:
+  - pip install ansible
 script:
-  - make test
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  - echo localhost > inventory
+  - ln -s ansible-ufw ../franklinkim.ufw
+  - ansible-playbook --syntax-check -i inventory tests/main.yml
+  - ansible-playbook -i inventory tests/main.yml --connection=local --sudo -vvvv
