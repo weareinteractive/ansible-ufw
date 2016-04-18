@@ -1,0 +1,15 @@
+---
+
+galaxy_name: franklinkim.ufw
+github_user: weareinteractive
+github_name: ansible-ufw
+badges: |
+  [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-ufw.svg)](https://travis-ci.org/weareinteractive/ansible-ufw)
+  [![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.ufw-blue.svg)](https://galaxy.ansible.com/weareinteractive/ufw)
+  [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
+  [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
+description: |
+  > * installs ufw
+  > * configures ufw
+  > * configures ufw rules
+  > * configures service

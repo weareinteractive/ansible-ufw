@@ -18,13 +18,13 @@
     state: "{{ item.state | default(omit) }}"
     to_ip: "{{ item.to_ip | default(omit) }}"
     to_port: "{{ item.to_port | default(omit) }}"
-  with_items: ufw_rules
+  with_items: "{{ ufw_rules }}"
 
 - name: Configuring application rules
   ufw:
     name: "{{ item.name }}"
     rule: "{{ item.rule if item.rule is defined else 'allow' }}"
-  with_items: ufw_applications
+  with_items: "{{ ufw_applications }}"
 
 - name: Configuring firewall
   template:

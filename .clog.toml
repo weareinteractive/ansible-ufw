@@ -1,0 +1,4 @@
+[clog]
+changelog = "CHANGELOG.md"
+repository = "https://github.com/weareinteractive/ansible-ufw"
+from-latest-tag = true
