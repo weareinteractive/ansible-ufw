@@ -1,7 +1,4 @@
 ---
-# For more information about default variables see:
-# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
-#
 # ufw_rules:
 #   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] }
 # ufw_applications:
