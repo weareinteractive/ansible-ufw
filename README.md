@@ -51,7 +51,7 @@ Here is a list of all the default variables for this role, which are also availa
 # package name (version)
 ufw_package: ufw
 # list of rules
-ufw_rules: []
+ufw_rules: [{ port: 22 }]
 # list of profiles located in /etc/ufw/applications.d
 ufw_applications: []
 # /etc/defaut/ufw settings
@@ -110,7 +110,7 @@ $ make test
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
