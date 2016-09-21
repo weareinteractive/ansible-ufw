@@ -1,3 +1,13 @@
+<a name="1.5.1"></a>
+### 1.5.1 (2016-09-21)
+
+
+#### Features
+
+*   allow port 22 by default ([a856fc3d](https://github.com/weareinteractive/ansible-ufw/commit/a856fc3d2327764995cad8d428744e4f66f63da2))
+
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2016-04-18)
 
