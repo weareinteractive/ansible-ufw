@@ -1,3 +1,13 @@
+<a name="1.5.2"></a>
+### 1.5.2 (2016-09-21)
+
+
+#### Features
+
+*   explicitly set allow ([2c534386](https://github.com/weareinteractive/ansible-ufw/commit/2c534386a0796d6cce368787d6f373844d2f87a5))
+
+
+
 <a name="1.5.1"></a>
 ### 1.5.1 (2016-09-21)
 
