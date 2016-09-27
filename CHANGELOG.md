@@ -1,3 +1,13 @@
+<a name="1.5.3"></a>
+### 1.5.3 (2016-09-27)
+
+
+#### Features
+
+*   fail if not debian ([a48260c3](https://github.com/weareinteractive/ansible-ufw/commit/a48260c32176585b977e5e8b307b9e859e67cdc1))
+
+
+
 <a name="1.5.2"></a>
 ### 1.5.2 (2016-09-21)
 
