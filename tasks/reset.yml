@@ -3,3 +3,4 @@
 - name: Resetting firewall
   ufw:
     state: reset
+  when: ufw_reset

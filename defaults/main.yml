@@ -20,3 +20,5 @@ ufw_default_application_policy: SKIP
 # firewall state: enabled | disabled
 ufw_state: enabled
 ufw_logging: "off"
+# always reset the firewall
+ufw_reset: yes
