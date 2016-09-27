@@ -1,3 +1,13 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2016-09-27)
+
+
+#### Features
+
+*   add `ufw_reset` option ([f1f9398f](https://github.com/weareinteractive/ansible-ufw/commit/f1f9398f14450fecdfce447745784046d86ee2be))
+
+
+
 <a name="1.5.3"></a>
 ### 1.5.3 (2016-09-27)
 
