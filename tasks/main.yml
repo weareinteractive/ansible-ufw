@@ -1,4 +1,5 @@
 ---
+
 - name: Compatibility check
   fail: msg="This role only works on Debian systems"
   when: not ansible_os_family == "Debian"
