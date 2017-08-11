@@ -1,6 +1,7 @@
 ---
 
-- name: Installing APT package
+- name: Installing ufw packages
   package:
-    name: "{{ ufw_package }}"
+    name: "{{ item }}"
     state: present
+  with_items: "{{ ufw_packages }}"
