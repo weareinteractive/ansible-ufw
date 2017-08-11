@@ -1,6 +1,6 @@
 ---
 
 - name: Installing APT package
-  apt:
-    pkg: "{{ ufw_package }}"
+  package:
+    name: "{{ ufw_package }}"
     state: present
