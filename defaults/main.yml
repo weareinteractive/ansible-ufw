@@ -6,7 +6,8 @@
 #
 
 # package name (version)
-ufw_package: ufw
+ufw_packages:
+  - ufw
 # list of rules
 ufw_rules: [{ port: 22, rule: allow }]
 # list of profiles located in /etc/ufw/applications.d
