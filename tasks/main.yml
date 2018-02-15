@@ -1,8 +1,8 @@
 ---
 
 - name: Compatibility check
-  fail: msg="This role only works on Debian systems"
-  when: not ansible_os_family == "Debian"
+  fail: msg="This role only works on Debian and Archlinux systems"
+  when: not ansible_os_family == "Debian|Archlinux"
 
 - include: install.yml
   tags:
