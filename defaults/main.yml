@@ -5,9 +5,11 @@
 #   - { name: OpenSSH [rule: allow] }
 #
 
-# package name (version)
+# Depricated: this will be removed in future releases! Use `ufw_packages`
+ufw_package: ufw
+# added to support systems where ufw packages are split up
 ufw_packages:
-  - ufw
+  - "{{ ufw_package }}"
 # list of rules
 ufw_rules: [{ port: 22, rule: allow }]
 # list of profiles located in /etc/ufw/applications.d
