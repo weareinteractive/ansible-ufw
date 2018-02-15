@@ -2,7 +2,7 @@
 
 - name: Compatibility check
   fail: msg="This role only works on Debian and Archlinux systems"
-  when: not ansible_os_family == "Debian|Archlinux"
+  when: ansible_os_family != "Debian" and ansible_os_family != "Archlinux"
 
 - import_tasks: install.yml
   tags:
