@@ -1,3 +1,18 @@
+<a name="1.7.0"></a>
+## 1.7.0 (2018-02-15)
+
+
+#### Features
+
+*   make ansible 2.4 conform ([f6c2812a](https://github.com/weareinteractive/ansible-ufw/commit/f6c2812a62c0969e5398667c9b9d2c9569e919f1))
+*   add support for archlinux ([0fbd009c](https://github.com/weareinteractive/ansible-ufw/commit/0fbd009c933ae036c27d97c6034129d5ced24854))
+
+#### Bug Fixes
+
+*   fix os check ([f79f83a4](https://github.com/weareinteractive/ansible-ufw/commit/f79f83a4b22cf57dde07cd8dc44ff4c4ba3fcbe0))
+
+
+
 <a name="1.6.0"></a>
 ## 1.6.0 (2016-09-27)
 
