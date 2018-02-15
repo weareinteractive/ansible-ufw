@@ -1,28 +1,28 @@
 ---
 
 - name: Compatibility check
-  fail: msg="This role only works on Debian systems"
-  when: not ansible_os_family == "Debian"
+  fail: msg="This role only works on Debian and Archlinux systems"
+  when: ansible_os_family != "Debian" and ansible_os_family != "Archlinux"
 
-- include: install.yml
+- import_tasks: install.yml
   tags:
     - networking
     - ufw
     - ufw-install
 
-- include: reset.yml
+- import_tasks: reset.yml
   tags:
     - networking
     - ufw
     - ufw-reset
 
-- include: config.yml
+- import_tasks: config.yml
   tags:
     - networking
     - ufw
     - ufw-config
 
-- include: service.yml
+- import_tasks: service.yml
   tags:
     - networking
     - ufw

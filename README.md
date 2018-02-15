@@ -34,7 +34,7 @@ $ git clone https://github.com/weareinteractive/ansible-ufw.git franklinkim.ufw
 
 ## Dependencies
 
-* Ansible >= 1.9
+* Ansible >= 2.4
 
 ## Variables
 
@@ -45,11 +45,15 @@ Here is a list of all the default variables for this role, which are also availa
 # ufw_rules:
 #   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] }
 # ufw_applications:
-#   - { name: OpenSSH [rule: allow] }
+#   - { name: OpenSSH [rule: allow, from_ip: any] }
 #
 
 # package name (version)
+# depricated: `ufw_package` will be removed in future releases! Use `ufw_packages`
 ufw_package: ufw
+# added to support systems where ufw packages are split up
+ufw_packages:
+  - "{{ ufw_package }}"
 # list of rules
 ufw_rules: [{ port: 22, rule: allow }]
 # list of profiles located in /etc/ufw/applications.d
