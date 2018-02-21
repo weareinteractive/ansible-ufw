@@ -4,3 +4,15 @@
   ufw:
     state: "{{ ufw_state }}"
     logging: "{{ ufw_logging }}"
+
+- name: Start ufw service
+  service:
+    name: ufw
+    state: started
+  when: ufw_service == "started"
+
+- name: Enable ufw service
+  service:
+    name: ufw
+    enabled: yes
+  when: ufw_state == "enabled"
