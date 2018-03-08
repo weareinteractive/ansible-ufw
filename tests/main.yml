@@ -5,6 +5,7 @@
     - franklinkim.ufw
   vars:
     ufw_rules:
+      - { port: 22, rule: allow }
       - { port: 80, rule: allow }
       - { from_ip: '127.0.0.1/8' }
       - { from_ip: '127.0.42.0/24', rule: deny }

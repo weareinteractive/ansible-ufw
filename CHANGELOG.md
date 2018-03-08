@@ -1,3 +1,13 @@
+<a name="1.7.1"></a>
+### 1.7.1 (2018-03-08)
+
+
+#### Features
+
+*   use ufw module to reload service ([c09cb5cd](https://github.com/weareinteractive/ansible-ufw/commit/c09cb5cdb1d88e7734149314517e0b42961b67db))
+
+
+
 <a name="1.7.0"></a>
 ## 1.7.0 (2018-02-15)
 
