@@ -80,7 +80,10 @@ These are the handlers that are defined in `handlers/main.yml`.
 ---
 
 - name: reload ufw
-  command: ufw reload
+  ufw:
+    state: reloaded
+  when: ufw_state == 'enabled'
+
 ```
 
 
@@ -96,6 +99,7 @@ This is an example playbook:
     - franklinkim.ufw
   vars:
     ufw_rules:
+      - { port: 22, rule: allow }
       - { port: 80, rule: allow }
       - { from_ip: '127.0.0.1/8' }
       - { from_ip: '127.0.42.0/24', rule: deny }

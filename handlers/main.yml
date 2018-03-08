@@ -1,4 +1,6 @@
 ---
 
 - name: reload ufw
-  command: ufw reload
+  ufw:
+    state: reloaded
+  when: ufw_state == 'enabled'
