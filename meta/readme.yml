@@ -1,6 +1,6 @@
 ---
 
-galaxy_name: franklinkim.ufw
+galaxy_name: weareinteractive.ufw
 github_user: weareinteractive
 github_name: ansible-ufw
 badges: |

@@ -2,7 +2,7 @@
 
 - hosts: all
   roles:
-    - franklinkim.ufw
+    - weareinteractive.ufw
   vars:
     ufw_rules:
       - { port: 22, rule: allow }
