@@ -1,3 +1,13 @@
+<a name="1.8.0"></a>
+## 1.8.0 (2018-10-04)
+
+
+#### Features
+
+*   add ufw comment variable ([90a20afe](https://github.com/weareinteractive/ansible-ufw/commit/90a20afe44e90ffce941c847aeb2add881fb0ecc))
+
+
+
 <a name="1.7.1"></a>
 ### 1.7.1 (2018-03-08)
 
