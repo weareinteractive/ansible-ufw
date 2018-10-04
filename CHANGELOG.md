@@ -1,3 +1,13 @@
+<a name="1.9.0"></a>
+## 1.9.0 (2018-10-04)
+
+
+#### Features
+
+*   update role owner name to weareinteractive.ufw ([54ef9032](https://github.com/weareinteractive/ansible-ufw/commit/54ef90320d1323e1d866a0110e86cca4556bad0f))
+
+
+
 <a name="1.8.0"></a>
 ## 1.8.0 (2018-10-04)
 
