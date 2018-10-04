@@ -1,6 +1,6 @@
 ---
 # ufw_rules:
-#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] }
+#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] [comment: 'rule comment']}
 # ufw_applications:
 #   - { name: OpenSSH [rule: allow, from_ip: any] }
 #

@@ -2,6 +2,7 @@
 
 - name: Configuring port/protocol/network rules
   ufw:
+    comment: "{{ item.comment | default(omit) }}"
     delete: "{{ item.delete | default(omit) }}"
     direction: "{{ item.direction | default(omit) }}"
     from_ip: "{{ item.from_ip | default(omit) }}"
