@@ -43,7 +43,7 @@ Here is a list of all the default variables for this role, which are also availa
 ```yaml
 ---
 # ufw_rules:
-#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] }
+#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] [comment: 'rule comment']}
 # ufw_applications:
 #   - { name: OpenSSH [rule: allow, from_ip: any] }
 #
@@ -95,18 +95,20 @@ This is an example playbook:
 ---
 
 - hosts: all
+  become: yes
   roles:
     - franklinkim.ufw
   vars:
     ufw_rules:
-      - { port: 22, rule: allow }
+      - { port: 22, rule: allow, comment: 'Allow SSH' }
       - { port: 80, rule: allow }
-      - { from_ip: '127.0.0.1/8' }
+      - { from_ip: '127.0.0.1/8', comment: 'Allow localhost' }
       - { from_ip: '127.0.42.0/24', rule: deny }
     ufw_default_forward_policy: ACCEPT
     ufw_logging: full
     ufw_applications:
      - { name: "OpenSSH" }
+
 
 ```
 
