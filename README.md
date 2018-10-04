@@ -1,11 +1,11 @@
-# Ansible franklinkim.ufw role
+# Ansible weareinteractive.ufw role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-ufw.svg)](https://travis-ci.org/weareinteractive/ansible-ufw)
 [![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.ufw-blue.svg)](https://galaxy.ansible.com/weareinteractive/ufw)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-ufw.svg)](https://github.com/weareinteractive/ansible-ufw)
 
-> `franklinkim.ufw` is an [Ansible](http://www.ansible.com) role which:
+> `weareinteractive.ufw` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs ufw
 > * configures ufw
@@ -17,19 +17,19 @@
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install franklinkim.ufw
+$ ansible-galaxy install weareinteractive.ufw
 ```
 
 Using `requirements.yml`:
 
 ```yaml
-- src: franklinkim.ufw
+- src: weareinteractive.ufw
 ```
 
 Using `git`:
 
 ```shell
-$ git clone https://github.com/weareinteractive/ansible-ufw.git franklinkim.ufw
+$ git clone https://github.com/weareinteractive/ansible-ufw.git weareinteractive.ufw
 ```
 
 ## Dependencies
@@ -97,7 +97,7 @@ This is an example playbook:
 - hosts: all
   become: yes
   roles:
-    - franklinkim.ufw
+    - weareinteractive.ufw
   vars:
     ufw_rules:
       - { port: 22, rule: allow, comment: 'Allow SSH' }
