@@ -99,6 +99,7 @@ This is an example playbook:
   roles:
     - weareinteractive.ufw
   vars:
+    ufw_reset: no
     ufw_rules:
       - { port: 22, rule: allow, comment: 'Allow SSH' }
       - { port: 80, rule: allow }
