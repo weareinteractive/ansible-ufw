@@ -1,0 +1,2 @@
+lint:
+	ansible-lint .
