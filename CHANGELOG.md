@@ -1,3 +1,13 @@
+<a name="1.9.1"></a>
+### 1.9.1 (2019-06-17)
+
+
+#### Features
+
+*   update syntax to ansible 2.8 ([6ab78745](https://github.com/weareinteractive/ansible-ufw/commit/6ab787459a63901175e661875579e715e238eccb))
+
+
+
 <a name="1.10.0"></a>
 ## 1.10.0 (2019-05-13)
 
