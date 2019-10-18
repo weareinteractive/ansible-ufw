@@ -1,3 +1,13 @@
+<a name="1.10.0"></a>
+## 1.10.0 (2019-10-18)
+
+
+#### Features
+
+*   add ipt_modules var ([2d55660a](https://github.com/weareinteractive/ansible-ufw/commit/2d55660af366bca2c5e1e4d686279189276a4a2b))
+
+
+
 <a name="1.9.1"></a>
 ### 1.9.1 (2019-06-17)
 
