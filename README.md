@@ -64,6 +64,7 @@ ufw_default_input_policy: DROP
 ufw_default_output_policy: ACCEPT
 ufw_default_forward_policy: DROP
 ufw_default_application_policy: SKIP
+ufw_default_ipt_modules: "nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
 # firewall state: enabled | disabled
 ufw_state: enabled
 ufw_logging: "off"
