@@ -5,6 +5,7 @@
 
   vars:
     ufw_state: disable
+    ufw_rules: []
 
   pre_tasks:
     - name: Update apt cache.
