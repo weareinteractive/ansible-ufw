@@ -4,20 +4,7 @@
   become: true
 
   vars:
-    ufw_reset: false
-    ufw_rules:
-      - port: 22
-        rule: allow
-        comment: 'Allow SSH'
-      - port: 80
-        rule: allow
-      - from_ip: '127.0.0.1/8'
-        comment: 'Allow localhost'
-      - from_ip: '127.0.42.0/24'
-        rule: deny
-    ufw_default_forward_policy: ACCEPT
-    ufw_logging: full
-    ufw_ipv6: "no"
+    ufw_state: disable
 
   pre_tasks:
     - name: Update apt cache.

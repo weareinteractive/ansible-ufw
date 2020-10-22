@@ -56,7 +56,8 @@ ufw_packages:
   - "{{ ufw_package }}"
 # list of rules
 ufw_rules:
-  - {port:22, rule:allow}
+  - port: 22
+    rule: allow
 # list of profiles located in /etc/ufw/applications.d
 ufw_applications: []
 # /etc/defaut/ufw settings
@@ -95,34 +96,24 @@ This is an example playbook:
 
 ```yaml
 ---
-- name: Converge
-  hosts: all
+- hosts: all
   become: true
-
+  roles:
+    - weareinteractive.ufw
   vars:
     ufw_reset: false
     ufw_rules:
-      - {port:22, rule:allow, comment:'Allow SSH'}
-      - {port:80, rule:allow}
-      - {from_ip:'127.0.0.1/8', comment:'Allow localhost'}
-      - {from_ip:'127.0.42.0/24', rule:deny}
+      - port: 22
+        rule: allow
+        comment: 'Allow SSH'
+      - port: 80
+        rule: allow
+      - from_ip: '127.0.0.1/8'
+        comment: 'Allow localhost'
+      - from_ip: '127.0.42.0/24'
+        rule: deny
     ufw_default_forward_policy: ACCEPT
     ufw_logging: full
-
-  pre_tasks:
-    - name: Update apt cache.
-      apt:
-        update_cache: true
-        cache_valid_time: 600
-      when: ansible_os_family == 'Debian'
-
-  roles:
-    - weareinteractive.ufw
-
-  post_tasks:
-    - name: Verify UFW is running
-      command: ufw status
-      changed_when: false
 
 ```
 
