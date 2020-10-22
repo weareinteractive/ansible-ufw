@@ -17,6 +17,7 @@
         rule: deny
     ufw_default_forward_policy: ACCEPT
     ufw_logging: full
+    ufw_state: disabled
 
   pre_tasks:
     - name: Update apt cache.
