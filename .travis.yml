@@ -1,20 +1,35 @@
 ---
 language: python
-python: "2.7"
+services: docker
+
+env:
+  global:
+    - ROLE_NAME: ufw
+  matrix:
+    - MOLECULE_DISTRO: centos8
+    - MOLECULE_DISTRO: centos7
+    - MOLECULE_DISTRO: debian9
+    - MOLECULE_DISTRO: debian8
+    - MOLECULE_DISTRO: ubuntu2004
+    - MOLECULE_DISTRO: ubuntu1804
 
 before_install:
- - sudo apt-get update -qq
- - sudo apt-get install -qq python-apt python-pycurl aptitude
+  # Upgrade Docker to work with docker-py.
+  - curl https://gist.githubusercontent.com/geerlingguy/ce883ad4aec6a5f1187ef93bd338511e/raw/36612d28981d92863f839c5aefe5b7dd7193d6c6/travis-ci-docker-upgrade.sh | sudo bash
 
 install:
-  - pip install ansible
+  # Install test dependencies.
+  - pip install molecule[docker] yamllint ansible-lint docker
+
+before_script:
+  # Use actual Ansible Galaxy role name for the project directory.
+  - cd ../
+  - mv ansible-$ROLE_NAME weareinteractive.$ROLE_NAME
+  - cd weareinteractive.$ROLE_NAME
 
 script:
-  - echo localhost > inventory
-  - ln -s ansible-ufw ../weareinteractive.ufw
-  - ansible-playbook --syntax-check -i inventory tests/main.yml
-  - ansible-playbook -i inventory tests/main.yml --connection=local -vvvv
-  - "ansible-playbook -i inventory tests/main.yml --connection=local -vvvv | grep -q 'changed=0.*failed=0'  && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)"
+  # Run tests.
+  - molecule test
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

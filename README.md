@@ -55,7 +55,8 @@ ufw_package: ufw
 ufw_packages:
   - "{{ ufw_package }}"
 # list of rules
-ufw_rules: [{ port: 22, rule: allow }]
+ufw_rules:
+  - {port:22, rule:allow}
 # list of profiles located in /etc/ufw/applications.d
 ufw_applications: []
 # /etc/defaut/ufw settings
@@ -69,7 +70,7 @@ ufw_default_ipt_modules: "nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
 ufw_state: enabled
 ufw_logging: "off"
 # always reset the firewall
-ufw_reset: yes
+ufw_reset: true
 
 ```
 
@@ -94,23 +95,34 @@ This is an example playbook:
 
 ```yaml
 ---
+- name: Converge
+  hosts: all
+  become: true
 
-- hosts: all
-  become: yes
-  roles:
-    - weareinteractive.ufw
   vars:
-    ufw_reset: no
+    ufw_reset: false
     ufw_rules:
-      - { port: 22, rule: allow, comment: 'Allow SSH' }
-      - { port: 80, rule: allow }
-      - { from_ip: '127.0.0.1/8', comment: 'Allow localhost' }
-      - { from_ip: '127.0.42.0/24', rule: deny }
+      - {port:22, rule:allow, comment:'Allow SSH'}
+      - {port:80, rule:allow}
+      - {from_ip:'127.0.0.1/8', comment:'Allow localhost'}
+      - {from_ip:'127.0.42.0/24', rule:deny}
     ufw_default_forward_policy: ACCEPT
     ufw_logging: full
-    ufw_applications:
-     - { name: "OpenSSH" }
 
+  pre_tasks:
+    - name: Update apt cache.
+      apt:
+        update_cache: true
+        cache_valid_time: 600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - weareinteractive.ufw
+
+  post_tasks:
+    - name: Verify UFW is running
+      command: ufw status
+      changed_when: false
 
 ```
 
@@ -132,11 +144,11 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-*Note: To update the `README.md` file please install and run `ansible-role`:*
+*Note: To update the `README.md` file please install and run `ansible-readme`:*
 
 ```shell
-$ gem install ansible-role
-$ ansible-role docgen
+$ gem install ansible-readme
+$ ansible-readme
 ```
 
 ## License

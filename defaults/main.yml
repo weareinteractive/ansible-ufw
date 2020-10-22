@@ -12,7 +12,8 @@ ufw_package: ufw
 ufw_packages:
   - "{{ ufw_package }}"
 # list of rules
-ufw_rules: [{ port: 22, rule: allow }]
+ufw_rules:
+  - {port:22, rule:allow}
 # list of profiles located in /etc/ufw/applications.d
 ufw_applications: []
 # /etc/defaut/ufw settings
@@ -26,4 +27,4 @@ ufw_default_ipt_modules: "nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
 ufw_state: enabled
 ufw_logging: "off"
 # always reset the firewall
-ufw_reset: yes
+ufw_reset: true

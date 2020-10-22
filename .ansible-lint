@@ -1,2 +1,4 @@
 exclude_paths:
-  - ./meta/readme.yml
+  - meta/readme.yml
+skip_list:
+  - '106'
