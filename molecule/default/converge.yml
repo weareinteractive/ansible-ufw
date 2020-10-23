@@ -4,6 +4,7 @@
   become: true
 
   vars:
+    ufw_reset: false
     ufw_state: disabled
     ufw_rules: []
 
