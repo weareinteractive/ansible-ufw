@@ -1,0 +1,23 @@
+---
+
+- name: Applying rules
+  community.general.ufw:
+    comment: "{{ item.comment | default(omit) }}"
+    default: "{{ item.default | default(omit) }}"
+    delete: "{{ item.delete | default(omit) }}"
+    direction: "{{ item.direction | default(omit) }}"
+    from_ip: "{{ item.from_ip | default(omit) }}"
+    from_port: "{{ item.from_port | default(omit) }}"
+    insert: "{{ item.insert | default(omit) }}"
+    insert_relative_to: "{{ item.insert_relative_to | default(omit) }}"
+    interface: "{{ item.interface | default(omit) }}"
+    interface_in: "{{ item.interface_in | default(omit) }}"
+    interface_out: "{{ item.interface_out | default(omit) }}"
+    log: "{{ item.log | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    proto: "{{ item.proto | default(omit) }}"
+    route: "{{ item.route | default(omit) }}"
+    rule: "{{ item.rule | default('omit') }}"
+    to_ip: "{{ item.to_ip | default(omit) }}"
+    to_port: "{{ item.to_port | default(omit) }}"
+  with_items: "{{ ufw_rules }}"

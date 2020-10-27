@@ -1,31 +1,33 @@
 ---
-# ufw_rules:
-#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] [comment: 'rule comment']}
-# ufw_applications:
-#   - { name: OpenSSH [rule: allow, from_ip: any] }
-#
+# Start the service and enable it on system boot
+ufw_enabled: true
 
-# package name (version)
-# depricated: `ufw_package` will be removed in future releases! Use `ufw_packages`
-ufw_package: ufw
-# added to support systems where ufw packages are split up
-ufw_packages:
-  - "{{ ufw_package }}"
-# list of rules
+# List of packages to install
+ufw_packages: ["ufw"]
+
+# The service name
+ufw_service: ufw
+
+# List of rules
 ufw_rules:
-  - port: 22
-    rule: allow
-# list of profiles located in /etc/ufw/applications.d
-ufw_applications: []
-# /etc/defaut/ufw settings
-ufw_ipv6: "yes"
-ufw_default_input_policy: DROP
-ufw_default_output_policy: ACCEPT
-ufw_default_forward_policy: DROP
-ufw_default_application_policy: SKIP
-ufw_default_ipt_modules: "nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
-# firewall state: enabled | disabled
-ufw_state: enabled
+  - rule: allow
+    port: 22
+
+# Manage the configuration file
+ufw_manage_config: false
+
+# Configuration object passed to the configuration file
+ufw_config:
+  IPV6: "yes"
+  DEFAULT_INPUT_POLICY: DROP
+  DEFAULT_OUTPUT_POLICY: ACCEPT
+  DEFAULT_FORWARD_POLICY: DROP
+  DEFAULT_APPLICATION_POLICY: SKIP
+  MANAGE_BUILTINS: "no"
+  IPT_SYSCTL: /etc/ufw/sysctl.conf
+  IPT_MODULES: ""
+
 ufw_logging: "off"
-# always reset the firewall
-ufw_reset: true
+
+# Path to the configuration file
+ufw_config_file: /etc/default/ufw

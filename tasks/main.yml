@@ -1,25 +1,9 @@
 ---
 
 - import_tasks: install.yml
-  tags:
-    - networking
-    - ufw
-    - ufw-install
-
-- import_tasks: reset.yml
-  tags:
-    - networking
-    - ufw
-    - ufw-reset
-
-- import_tasks: config.yml
-  tags:
-    - networking
-    - ufw
-    - ufw-config
 
 - import_tasks: service.yml
-  tags:
-    - networking
-    - ufw
-    - ufw-service
+
+- import_tasks: config.yml
+
+- import_tasks: manage.yml

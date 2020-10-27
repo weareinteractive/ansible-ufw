@@ -1,6 +1,10 @@
 ---
 
+- name: reset ufw
+  community.general.ufw:
+    state: reset
+
 - name: reload ufw
-  ufw:
+  community.general.ufw:
     state: reloaded
-  when: ufw_state == 'enabled'
+  when: ufw_enabled | bool

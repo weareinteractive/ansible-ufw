@@ -1,10 +1,5 @@
 ---
 
-- name: Configuring logging
-  ufw:
-    logging: "{{ ufw_logging }}"
-  changed_when: false # note: disabled since it breaks idempotence
-
-- name: Configuring service
-  ufw:
-    state: "{{ ufw_state }}"
+- name: Configuring service state
+  community.general.ufw:
+    state: "{{ 'enabled' if ufw_enabled else 'disabled' }}"

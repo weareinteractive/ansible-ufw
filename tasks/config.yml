@@ -1,39 +1,13 @@
 ---
 
-- name: Configuring port/protocol/network rules
-  ufw:
-    comment: "{{ item.comment | default(omit) }}"
-    delete: "{{ item.delete | default(omit) }}"
-    direction: "{{ item.direction | default(omit) }}"
-    from_ip: "{{ item.from_ip | default(omit) }}"
-    from_port: "{{ item.from_port | default(omit) }}"
-    insert: "{{ item.insert | default(omit) }}"
-    interface: "{{ item.interface | default(omit) }}"
-    log: "{{ item.log | default(omit) }}"
-    logging: "{{ item.logging | default(omit) }}"
-    name: "{{ item.name | default(omit) }}"
-    policy: "{{ item.policy | default(omit) }}"
-    port: "{{ item.port | default(omit) }}"
-    proto: "{{ item.proto | default(omit) }}"
-    rule: "{{ item.rule | default('allow') }}"
-    state: "{{ item.state | default(omit) }}"
-    to_ip: "{{ item.to_ip | default(omit) }}"
-    to_port: "{{ item.to_port | default(omit) }}"
-    route: "{{ item.route | default(omit) }}"
-  with_items: "{{ ufw_rules }}"
-
-- name: Configuring application rules
-  ufw:
-    name: "{{ item.name }}"
-    rule: "{{ item.rule if item.rule is defined else 'allow' }}"
-    from_ip: "{{ item.from_ip | default(omit)  }}"
-  with_items: "{{ ufw_applications }}"
-
-- name: Configuring firewall
+- name: Configuring service
   template:
-    src: etc/default/ufw.j2
-    dest: /etc/default/ufw
-    owner: root
-    group: root
+    src: "{{ ufw_config_file | basename }}.j2"
+    dest: "{{ ufw_config_file }}"
     mode: 0644
   notify: reload ufw
+  when: ufw_manage_config | bool
+
+- name: Configuring logging
+  community.general.ufw:
+    logging: "{{ ufw_logging }}"

@@ -2,9 +2,11 @@
 - name: Converge
   hosts: all
   become: true
-
+  collections:
+    - community.general
   vars:
-    ufw_reset: false
+    ufw_enabled: true
+    ufw_manage_config: true
 
   pre_tasks:
     - name: Update apt cache.

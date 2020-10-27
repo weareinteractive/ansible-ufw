@@ -1,6 +1,6 @@
 ---
 
-- name: Installing ufw packages
+- name: Installing packages
   package:
     name: "{{ item }}"
     state: present

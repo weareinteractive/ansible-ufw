@@ -1,19 +1,24 @@
+# @see https://docs.ansible.com/ansible/latest/collections/community/general/ufw_module.html#examples
 ---
+
 - hosts: all
   become: true
   roles:
     - weareinteractive.ufw
   vars:
-    ufw_reset: false
     ufw_rules:
-      - port: 22
-        rule: allow
-        comment: 'Allow SSH'
-      - port: 80
-        rule: allow
-      - from_ip: '127.0.0.1/8'
-        comment: 'Allow localhost'
-      - from_ip: '127.0.42.0/24'
-        rule: deny
+      # Set loggin
+      - logging: "on"
+      # Allow OpenSSH
+      - rule: allow
+        name: OpenSSH
+      # Delete OpenSSH rule
+      - rule: allow
+        name: OpenSSH
+        delete: true
+      # Allow all access to tcp port 80
+      - rule: allow
+        port: '80'
+        proto: tcp
     ufw_default_forward_policy: ACCEPT
     ufw_logging: full
