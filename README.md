@@ -34,7 +34,7 @@ $ git clone https://github.com/weareinteractive/ansible-ufw.git weareinteractive
 
 ## Dependencies
 
-* Ansible >= 2.4
+* Ansible >= 2.10
 
 ## Variables
 
@@ -42,36 +42,36 @@ Here is a list of all the default variables for this role, which are also availa
 
 ```yaml
 ---
-# ufw_rules:
-#   - { [port: ""] [rule: allow] [proto: any] [from_ip: any] [to_ip: any] [comment: 'rule comment']}
-# ufw_applications:
-#   - { name: OpenSSH [rule: allow, from_ip: any] }
-#
+# Start the service and enable it on system boot
+ufw_enabled: true
 
-# package name (version)
-# depricated: `ufw_package` will be removed in future releases! Use `ufw_packages`
-ufw_package: ufw
-# added to support systems where ufw packages are split up
-ufw_packages:
-  - "{{ ufw_package }}"
-# list of rules
+# List of packages to install
+ufw_packages: ["ufw"]
+
+# The service name
+ufw_service: ufw
+
+# List of rules
 ufw_rules:
-  - port: 22
-    rule: allow
-# list of profiles located in /etc/ufw/applications.d
-ufw_applications: []
-# /etc/defaut/ufw settings
-ufw_ipv6: "yes"
-ufw_default_input_policy: DROP
-ufw_default_output_policy: ACCEPT
-ufw_default_forward_policy: DROP
-ufw_default_application_policy: SKIP
-ufw_default_ipt_modules: "nf_conntrack_ftp nf_nat_ftp nf_conntrack_netbios_ns"
-# firewall state: enabled | disabled
-ufw_state: enabled
-ufw_logging: "off"
-# always reset the firewall
-ufw_reset: true
+  - rule: allow
+    port: 22
+
+# Manage the configuration file
+ufw_manage_config: false
+
+# Configuration object passed to the configuration file
+ufw_config:
+  IPV6: "yes"
+  DEFAULT_INPUT_POLICY: DROP
+  DEFAULT_OUTPUT_POLICY: ACCEPT
+  DEFAULT_FORWARD_POLICY: DROP
+  DEFAULT_APPLICATION_POLICY: SKIP
+  MANAGE_BUILTINS: "no"
+  IPT_SYSCTL: /etc/ufw/sysctl.conf
+  IPT_MODULES: ""
+
+# Path to the configuration file
+ufw_config_file: /etc/default/ufw
 
 ```
 
@@ -82,10 +82,14 @@ These are the handlers that are defined in `handlers/main.yml`.
 ```yaml
 ---
 
+- name: reset ufw
+  community.general.ufw:
+    state: reset
+
 - name: reload ufw
-  ufw:
+  community.general.ufw:
     state: reloaded
-  when: ufw_state == 'enabled'
+  when: ufw_enabled | bool
 
 ```
 
@@ -95,25 +99,40 @@ These are the handlers that are defined in `handlers/main.yml`.
 This is an example playbook:
 
 ```yaml
+# @see https://docs.ansible.com/ansible/latest/collections/community/general/ufw_module.html#examples
 ---
+
 - hosts: all
   become: true
   roles:
     - weareinteractive.ufw
   vars:
-    ufw_reset: false
     ufw_rules:
-      - port: 22
-        rule: allow
-        comment: 'Allow SSH'
-      - port: 80
-        rule: allow
-      - from_ip: '127.0.0.1/8'
-        comment: 'Allow localhost'
-      - from_ip: '127.0.42.0/24'
-        rule: deny
-    ufw_default_forward_policy: ACCEPT
-    ufw_logging: full
+      # Set loggin
+      - logging: "full"
+      # Allow OpenSSH
+      - rule: allow
+        name: OpenSSH
+      # Delete OpenSSH rule
+      - rule: allow
+        name: OpenSSH
+        delete: true
+      # Allow all access to tcp port 80
+      - rule: allow
+        port: '80'
+        proto: tcp
+    # Manage the configuration file
+    ufw_manage_config: true
+    # Configuration object passed to the configuration file
+    ufw_config:
+      IPV6: "yes"
+      DEFAULT_INPUT_POLICY: DROP
+      DEFAULT_OUTPUT_POLICY: ACCEPT
+      DEFAULT_FORWARD_POLICY: DROP
+      DEFAULT_APPLICATION_POLICY: SKIP
+      MANAGE_BUILTINS: "no"
+      IPT_SYSCTL: /etc/ufw/sysctl.conf
+      IPT_MODULES: ""
 
 ```
 
