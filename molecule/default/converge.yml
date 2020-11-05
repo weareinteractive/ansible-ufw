@@ -6,6 +6,7 @@
     - community.general
   vars:
     ufw_enabled: false
+    ufw_rules: []
 
   pre_tasks:
     - name: Update apt cache.
