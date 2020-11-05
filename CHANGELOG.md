@@ -1,3 +1,19 @@
+<a name="2.0.0"></a>
+## 2.0.0 (2020-11-05)
+
+#### Features
+
+*   upgrade to ansible 2.10 ([1c70e488](https://github.com/weareinteractive/ansible-ufw/commit/1c70e488d58381865c8a04777e830628c38801ce))
+*   switch to molecule testing ([148407ea](https://github.com/weareinteractive/ansible-ufw/commit/148407ea1a23d1abda1aafadb64a711328ddc070))
+
+#### Breaking changes
+
+*   remove `ufw_reset`
+*   remove `ufw_logging`
+*   remove `ufw_package`
+*   refactor `ufw_status` to `ufw_enabled`
+*   refactor config variables to `ufw_config` map and add `ufw_manage_config`
+
 <a name="1.10.0"></a>
 ## 1.10.0 (2019-10-18)
 
