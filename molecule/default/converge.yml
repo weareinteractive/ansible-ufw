@@ -5,8 +5,7 @@
   collections:
     - community.general
   vars:
-    ufw_enabled: true
-    ufw_manage_config: true
+    ufw_enabled: false
 
   pre_tasks:
     - name: Update apt cache.
