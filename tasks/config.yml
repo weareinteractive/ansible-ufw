@@ -7,7 +7,3 @@
     mode: 0644
   notify: reload ufw
   when: ufw_manage_config | bool
-
-- name: Configuring logging
-  community.general.ufw:
-    logging: "{{ ufw_logging }}"

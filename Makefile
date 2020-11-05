@@ -1,5 +1,5 @@
 .DEFAULT_GOAL:=help
-DISTROS=centos8 centos7 ubuntu1804 ubuntu1604 debian9
+DISTROS=centos8 centos7 ubuntu2004 ubuntu1804 ubuntu1604 debian9
 MAKEFLAGS+=-s
 
 # --- Macros ------------------------------------------------------------------

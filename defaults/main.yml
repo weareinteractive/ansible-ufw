@@ -27,7 +27,5 @@ ufw_config:
   IPT_SYSCTL: /etc/ufw/sysctl.conf
   IPT_MODULES: ""
 
-ufw_logging: "off"
-
 # Path to the configuration file
 ufw_config_file: /etc/default/ufw
