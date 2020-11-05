@@ -13,6 +13,11 @@
         update_cache: true
         cache_valid_time: 600
       when: ansible_os_family == 'Debian'
+    - name: Modprobe iptables
+      community.general.modprobe:
+        name: ip6table_filter
+        state: present
+      when: ansible_os_family == 'Debian'
 
   roles:
     - weareinteractive.ufw
