@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+### 2.0.1 (2020-11-25)
+
+
+#### Bug Fixes
+
+*   use `to_port` instead of `port` in the documentation ([9baae351](https://github.com/weareinteractive/ansible-ufw/commit/9baae3510b5f8fbccbdd01eaac948b660a6bf620))
+
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2020-11-05)
 
