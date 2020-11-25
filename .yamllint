@@ -7,6 +7,5 @@ rules:
     level: warning
 
 ignore: |
-  ./meta/readme.yml
   .github/stale.yml
   .travis.yml

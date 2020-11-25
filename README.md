@@ -51,10 +51,11 @@ ufw_packages: ["ufw"]
 # The service name
 ufw_service: ufw
 
-# List of rules
+# List of rules to be applied
+# see https://docs.ansible.com/ansible/latest/collections/community/general/ufw_module.html for documentation
 ufw_rules:
   - rule: allow
-    port: 22
+    to_port: 22
 
 # Manage the configuration file
 ufw_manage_config: false
@@ -119,7 +120,7 @@ This is an example playbook:
         delete: true
       # Allow all access to tcp port 80
       - rule: allow
-        port: '80'
+        to_port: '80'
         proto: tcp
     # Manage the configuration file
     ufw_manage_config: true
