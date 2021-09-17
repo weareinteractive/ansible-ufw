@@ -21,4 +21,7 @@ provisioner:
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 verifier:
-  name: ansible
+  name: testinfra
+  options:
+    v: 1
+    sudo: true

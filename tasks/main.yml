@@ -9,3 +9,5 @@
 - import_tasks: config.yml
 
 - import_tasks: manage.yml
+
+- import_tasks: simple_whitelists.yml

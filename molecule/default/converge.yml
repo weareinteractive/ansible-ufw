@@ -5,7 +5,7 @@
   collections:
     - community.general
   vars:
-    ufw_enabled: false
+    ufw_enabled: true
     ufw_rules: []
     ufw_allow_tcp_ports:
       - 80

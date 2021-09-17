@@ -6,3 +6,8 @@
 !.vscode/settings.json
 !.vscode/extensions.json
 .idea
+\#*\#
+*~
+*.pyc
+pytestdebug.log
+.cache
