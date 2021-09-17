@@ -1,0 +1,4 @@
+---
+ufw_valid_proto:
+  - "tcp"
+  - "udp"

@@ -1,0 +1,121 @@
+---
+- name: Check if ufw_allow_tcp_ports is a list
+  assert:
+    that:
+      - ufw_allow_tcp_ports is iterable
+    msg: "'ufw_allow_tcp_ports' must be a list if set"
+    quiet: true
+  when:
+    - ufw_allow_tcp_ports is defined
+
+- name: Check if ufw_allow_tcp_ports is a list of valid format
+  assert:
+    that:
+      - item is string or item is number
+    msg: "'ufw_allow_tcp_ports' must be a list of ports or services"
+    quiet: true
+  with_items:
+    - "{{ ufw_allow_tcp_ports }}"
+  when:
+    - ufw_allow_tcp_ports is defined
+
+- name: Check if ufw_allow_udp_ports is a list
+  assert:
+    that:
+      - ufw_allow_udp_ports is iterable
+    msg: "'ufw_allow_udp_ports' must be a list if set"
+    quiet: true
+  when:
+    - ufw_allow_udp_ports is defined
+
+- name: Check if ufw_allow_udp_ports is a list of valid format
+  assert:
+    that:
+      - item is string or item is number
+    msg: "'ufw_allow_udp_ports' must be a list of ports or services"
+    quiet: true
+  with_items:
+    - "{{ ufw_allow_udp_ports }}"
+  when:
+    - ufw_allow_udp_ports is defined
+
+- name: Check if ufw_allow_interfaces is a list
+  assert:
+    that:
+      - ufw_allow_interfaces is iterable
+    msg: "'ufw_allow_interfaces' must be a list if set"
+    quiet: true
+  when:
+    - ufw_allow_interfaces is defined
+
+- name: Check if ufw_allow_interfaces is a list of valid format
+  assert:
+    that:
+      - item is string
+    msg: "'ufw_allow_interfaces' must be a list of interfaces"
+    quiet: true
+  with_items:
+    - "{{ ufw_allow_interfaces }}"
+  when:
+    - ufw_allow_interfaces is defined
+
+- name: Check if ufw_ports_acl is a list
+  assert:
+    that:
+      - ufw_ports_acl is iterable
+    msg: "'ufw_ports_acl' must be a list if set"
+    quiet: true
+  when:
+    - ufw_ports_acl is defined
+
+- name: Check if ufw_ports_acl items have correct structure
+  assert:
+    that:
+      - item.name is defined
+      - item.name is string
+      - item.port is defined
+      - item.port is string or item.port is number
+    msg: "'ufw_ports_acl' must be a list of rules which contain at least fields: 'name', 'port'"
+    quiet: true
+  with_items:
+    - "{{ ufw_ports_acl }}"
+  when:
+    - ufw_ports_acl is defined
+
+- name: Check if ufw_ports_acl items have correct structure
+  assert:
+    that:
+      - item.proto is not defined or ( item.proto is defined and item.proto | lower in ufw_valid_proto )
+    msg: "Value of 'proto' in rule with name '{{ item.name }}' \
+    must be one of: {{ ufw_valid_proto }}, \
+    got: '{{ item.proto | default(omit) }}'."
+    quiet: true
+  with_items:
+    - "{{ ufw_ports_acl }}"
+  when:
+    - ufw_ports_acl is defined
+
+- name: Check if ufw_ports_acl items have correct structure
+  assert:
+    that:
+      - item.ips is defined
+      - item.ips is iterable
+    msg: "Field 'ips' in 'ufw_ports_acl' list entries must be a list of ip addresses."
+    quiet: true
+  with_items:
+    - "{{ ufw_ports_acl }}"
+  when:
+    - ufw_ports_acl is defined
+
+- name: Check if ips list of ufw_ports_acl items are in a valid ip or ip/cidr format
+  assert:
+    that:
+      - item[1] | ansible.netcommon.ipaddr
+    msg: "'ufw_ports_acl' contains an invalid ip address in 'ips' field of \
+    rule with name '{{ item[0].name }}': '{{ item[1] }}'."
+    quiet: true
+  with_subelements:
+    - "{{ ufw_ports_acl }}"
+    - "ips"
+  when:
+    - ufw_ports_acl is defined
