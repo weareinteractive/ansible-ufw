@@ -7,6 +7,27 @@
   vars:
     ufw_enabled: false
     ufw_rules: []
+    ufw_allow_tcp_ports:
+      - 80
+      - https
+    ufw_allow_udp_ports:
+      - 161
+      - 162
+    ufw_allow_interfaces:
+      - tun0
+      - openvpntap0
+    ufw_ports_acl:
+      - name: SSH
+        port: 22
+        ips:
+          - 10.0.0.0/8
+          - 192.168.0.0/16
+      - name: SIP
+        port: 5060
+        proto: UDP
+        ips:
+          - 10.0.0.0/24
+          - 192.168.0.0/24
 
   pre_tasks:
     - name: Update apt cache.

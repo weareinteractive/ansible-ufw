@@ -30,3 +30,21 @@ ufw_config:
 
 # Path to the configuration file
 ufw_config_file: /etc/default/ufw
+
+# List of TCP ports to be opened to the public
+ufw_allow_tcp_ports: []
+
+# List of UDP ports to be opened to the public
+ufw_allow_udp_ports: []
+
+# List of interfaces to be opened to the public
+ufw_allow_interfaces: []
+
+# List of rules to be opened. Format of the structure:
+# - name: <name>
+#   port: 22
+#   proto: TCP (default)
+#   ips:
+#     - a.a.a.a
+#     - b.b.b.b
+ufw_ports_acl: []
