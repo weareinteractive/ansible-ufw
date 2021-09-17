@@ -13,3 +13,5 @@
 - import_tasks: simple_whitelists.yml
 
 - import_tasks: manage_acl.yml
+
+- import_tasks: flush_handlers.yml
