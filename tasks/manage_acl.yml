@@ -1,0 +1,13 @@
+---
+- name: Install complex accepting rules
+  community.general.ufw:
+    proto: "{{ item[0].proto | default('tcp') | lower }}"
+    rule: allow
+    to_port: "{{ item[0].port | string }}"
+    from_ip: "{{ item[1] }}"
+    comment: "ufw_ports_acl: {{ item[0].name }}"
+  with_subelements:
+    - "{{ ufw_ports_acl }}"
+    - "ips"
+  when:
+    - ufw_ports_acl is defined

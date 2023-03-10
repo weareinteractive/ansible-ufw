@@ -40,6 +40,40 @@ $ git clone https://github.com/weareinteractive/ansible-ufw.git weareinteractive
 
 Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
+| Variable             | Default     | Comments (type)                                   |
+| :---                 | :---        | :---                                              |
+| ufw_allow_tcp_ports | | List of tcp ports/services which are open to the public |
+| ufw_allow_udp_ports | | List of udp ports/services which are open to the public |
+| ufw_allow_interfaces | | List of interfaces through which access is generally allowed |
+| ufw_ports_acl | | List of dictionary structure containing rule configuration. Structure is documented below. |
+
+
+ufw_ports_acl structure
+-----------------------
+
+```yaml
+ufw_ports_acl:
+  - name: SSH
+    port: 22
+    ips: "{{ firewall_ssh_ips }}"
+  - name: SNMP
+    port: 161
+    proto: UDP
+    ips: "{{ firewall_snmp_ips }}"
+```
+
+| Variable             | Default     | Comments (type)                                   |
+| :---                 | :---        | :---                                              |
+| name | | A name identifying the rule |
+| port | | Destination port |
+| proto | | Protocol to be used |
+| ips | | List of source IP addresses |
+
+
+
+
+
+
 ```yaml
 ---
 # Start the service and enable it on system boot
@@ -73,6 +107,37 @@ ufw_config:
 
 # Path to the configuration file
 ufw_config_file: /etc/default/ufw
+
+ufw_allow_tcp_ports:
+  - 80
+  - 443
+  - ssh
+
+ufw_allow_udp_ports:
+  - 161
+
+ufw_allow_interfaces:
+  - openvpntun+
+
+firewall_ssh_ips: "{{ firewall_ssh_ips_default }}"
+firewall_ssh_ips_default:
+  - x.x.x.x
+  - y.y.y.y
+
+firewall_snmp_ips: "{{ firewall_snmp_ips_default }}"
+firewall_snmp_ips_default:
+  - a.a.a.a
+  - b.b.b.b
+
+ufw_ports_acl:
+  - name: SSH
+    port: 22
+    ips: "{{ firewall_ssh_ips }}"
+  - name: SNMP
+    port: 161
+    proto: UDP
+    ips: "{{ firewall_snmp_ips }}"
+
 
 ```
 

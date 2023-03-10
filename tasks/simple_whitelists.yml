@@ -1,0 +1,29 @@
+---
+- name: Apply tcp port whitelist
+  community.general.ufw:
+    proto: tcp
+    rule: allow
+    to_port: "{{ item | string }}"
+  with_items:
+    - "{{ ufw_allow_tcp_ports }}"
+  when:
+    - ufw_allow_tcp_ports is defined
+
+- name: Apply udp port whitelist
+  community.general.ufw:
+    proto: udp
+    rule: allow
+    to_port: "{{ item | string }}"
+  with_items:
+    - "{{ ufw_allow_udp_ports }}"
+  when:
+    - ufw_allow_udp_ports is defined
+
+- name: Apply interfaces whitelist
+  community.general.ufw:
+    rule: allow
+    interface_in: "{{ item }}"
+  with_items:
+    - "{{ ufw_allow_interfaces }}"
+  when:
+    - ufw_allow_interfaces is defined

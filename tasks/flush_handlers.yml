@@ -1,0 +1,7 @@
+---
+# After this rule we want to have the firewall activated immediately.
+# In order to prevent that it is never enabled if the playbook interrupts
+# for some reason
+
+- name: Flush handlers
+  meta: flush_handlers

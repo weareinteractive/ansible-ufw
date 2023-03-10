@@ -4,7 +4,6 @@ dependency:
 driver:
   name: docker
 lint: |
-  set -e
   yamllint .
   ansible-lint
 platforms:
@@ -21,4 +20,7 @@ provisioner:
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 verifier:
-  name: ansible
+  name: testinfra
+  options:
+    v: 1
+    sudo: true

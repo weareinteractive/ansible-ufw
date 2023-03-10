@@ -1,5 +1,7 @@
 ---
 
+- import_tasks: assert.yml
+
 - import_tasks: install.yml
 
 - import_tasks: service.yml
@@ -7,3 +9,9 @@
 - import_tasks: config.yml
 
 - import_tasks: manage.yml
+
+- import_tasks: simple_whitelists.yml
+
+- import_tasks: manage_acl.yml
+
+- import_tasks: flush_handlers.yml
